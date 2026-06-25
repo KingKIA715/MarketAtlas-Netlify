@@ -1,0 +1,145 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* MarketAtlas — Modern Fintech
+ * Palette: white surfaces, slate ink, electric blue accent, semantic green/red
+ * Type: Inter for everything, JetBrains Mono for numerics
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-brand: var(--brand);
+  --color-gold-tint: var(--gold-tint);
+  --color-silver-tint: var(--silver-tint);
+  --color-platinum-tint: var(--platinum-tint);
+  --color-copper-tint: var(--copper-tint);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-surface-alt: var(--surface-alt);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Slate scale (matches tailwind slate-50..950) */
+  --background: oklch(0.984 0.003 247.86);   /* slate-50 */
+  --surface-alt: oklch(0.968 0.007 247.9);   /* slate-100 */
+  --foreground: oklch(0.21 0.034 264.66);    /* slate-900 */
+  --ink: oklch(0.13 0.028 261);              /* slate-950 */
+  --ink-soft: oklch(0.372 0.034 259.7);      /* slate-700 */
+
+  --card: oklch(1 0 0);                      /* white */
+  --card-foreground: var(--ink);
+  --popover: var(--card);
+  --popover-foreground: var(--ink);
+
+  --primary: var(--ink);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.968 0.007 247.9);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.968 0.007 247.9);
+  --muted-foreground: oklch(0.554 0.029 256.85);  /* slate-500 */
+  --accent: oklch(0.968 0.007 247.9);
+  --accent-foreground: var(--ink);
+
+  --brand: oklch(0.546 0.215 262.88);        /* blue-600 */
+
+  --positive: oklch(0.627 0.194 149.21);     /* green-600 */
+  --negative: oklch(0.577 0.245 27.32);      /* red-600 */
+  --destructive: var(--negative);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.929 0.013 255.51);       /* slate-200 */
+  --input: var(--border);
+  --ring: var(--brand);
+
+  /* Metal accents */
+  --gold-tint: oklch(0.705 0.158 65.97);     /* amber-500 */
+  --silver-tint: oklch(0.554 0.029 256.85);  /* slate-500 */
+  --platinum-tint: oklch(0.554 0.046 257.42);
+  --copper-tint: oklch(0.62 0.16 40);
+
+  --chart-1: var(--brand);
+  --chart-2: var(--positive);
+  --chart-3: var(--negative);
+  --chart-4: var(--gold-tint);
+  --chart-5: var(--ink-soft);
+}
+
+.dark {
+  --background: oklch(0.13 0.028 261);
+  --surface-alt: oklch(0.21 0.034 264.66);
+  --foreground: oklch(0.984 0.003 247.86);
+  --ink: oklch(0.984 0.003 247.86);
+  --ink-soft: oklch(0.869 0.022 252.89);
+  --card: oklch(0.21 0.034 264.66);
+  --card-foreground: var(--ink);
+  --popover: var(--card);
+  --popover-foreground: var(--ink);
+  --primary: oklch(1 0 0);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(0.279 0.041 260.03);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.279 0.041 260.03);
+  --muted-foreground: oklch(0.708 0.027 256.79);
+  --accent: oklch(0.279 0.041 260.03);
+  --accent-foreground: var(--ink);
+  --border: oklch(0.279 0.041 260.03);
+  --input: var(--border);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono, .tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
